@@ -16,12 +16,32 @@ struct ContentView: View {
     
     let tipPercentages = [10, 15, 18, 20, 25, 0]
     
+    var amountPerPerson: String {
+        guard let numberOfPeople = Double(numOfPeople), numberOfPeople > 0 else { return "0.00" }
+        let amountPerPerson = (totalAmount / numberOfPeople)
+        return String(format: "%.2f",amountPerPerson)
+    }
+    
+    var totalAmount: Double {
+        guard let amount = Double(billAmount) else { return 0.0 }
+        return amount + (amount / 100 * Double(tipPercentages[tipPercentage]))
+    }
+    
+    var totalAmountString: String {
+        return String(format: "%.2f", totalAmount)
+    }
+    
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     TextField("Bill Amount?", text: $billAmount)
                         .keyboardType(.decimalPad)
+                        .onReceive(Just(billAmount)) { newValue in
+                            var filtered = ""
+                            filtered = newValue.filter { "0123456789.".contains($0) }
+                            if filtered != newValue { self.billAmount = filtered }
+                        }
                         
                     TextField("Number of people splitting the bill?", text: $numOfPeople)
                         .keyboardType(.numberPad)
@@ -38,8 +58,12 @@ struct ContentView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
-                Section {
-                    Text(self.calculateAmountPerPerson())
+                Section(header:Text("Total amount:")) {
+                    Text("$ \(totalAmountString)")
+                }
+                
+                Section(header: Text("Amount per person:")) {
+                    Text("$ \(amountPerPerson)")
                 }
             }
             .navigationBarTitle(Text("We SplitSwift UI"))
@@ -59,5 +83,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+                    
     }
 }
