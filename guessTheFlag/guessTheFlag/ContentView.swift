@@ -8,9 +8,29 @@
 
 import SwiftUI
 
-//#283048
-//
-//#859398
+extension View {
+    func capsuledWithBorder() -> some View {
+        self.modifier(CapsuledBorder())
+    }
+}
+
+struct CapsuledBorder: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .clipShape(Capsule())
+            .overlay(Capsule().stroke(Color.black, lineWidth: 0.5))
+            .shadow(color: .black, radius: 5)
+    }
+}
+
+struct FlagImage: View {
+    let imageName: String
+    var body: some View {
+        Image(imageName)
+            .renderingMode(.original)
+            .capsuledWithBorder()
+    }
+}
 
 
 struct ContentView: View {
@@ -48,11 +68,7 @@ struct ContentView: View {
                     Button(action: {
                         self.flagTapped(number)
                     }) {
-                        Image(self.countries[number])
-                            .renderingMode(.original)
-                        .clipShape(Capsule())
-                        .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-                            .shadow(color: .black, radius: 2)
+                        FlagImage(imageName: self.countries[number])
                     }
                 }
                 Spacer()

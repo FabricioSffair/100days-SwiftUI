@@ -60,6 +60,7 @@ struct ContentView: View {
                 }
                 Section(header:Text("Total amount:")) {
                     Text("$ \(totalAmountString)")
+                        .foregroundColor(tipPercentage == 5 ? .red : .black)
                 }
                 
                 Section(header: Text("Amount per person:")) {
