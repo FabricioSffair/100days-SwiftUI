@@ -205,10 +205,16 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
+        let binding = Binding(get: { self.selectedUnit },
+                              set: {
+                                self.convertFromUnit = 0
+                                self.convertToUnit = 0
+                                self.selectedUnit = $0
+                            })
+        return NavigationView {
             Form {
                 Section(header: Text("Select conversion type:")) {
-                    Picker("Select Unit Conversion option", selection: $selectedUnit) {
+                    Picker("Select Unit Conversion option", selection: binding) {
                         ForEach(Unit.allCases) { unit in
                             Text(unit.displayValue)
                         }
@@ -222,9 +228,7 @@ struct ContentView: View {
                         ForEach(0..<self.selectedUnit.units.count) {
                             Text("\(self.selectedUnit.units[$0])").tag($0)
                         }
-                        .id(selectedUnit)
                     }
-                    .id(selectedUnit)
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 Section(header: Text("Convert To:")) {
@@ -232,9 +236,7 @@ struct ContentView: View {
                         ForEach(0..<self.selectedUnit.units.count) {
                             Text("\(self.selectedUnit.units[$0])").tag($0)
                         }
-                        .id(selectedUnit)
                     }
-                    .id(selectedUnit)
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 Text(conversionResultString)
