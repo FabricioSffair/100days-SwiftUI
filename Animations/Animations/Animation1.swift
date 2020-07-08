@@ -8,6 +8,28 @@
 
 import SwiftUI
 
+struct Animation2: View {
+    
+    @State private var animationAmount: CGFloat = 1
+    
+    var body: some View {
+        print(animationAmount)
+        return VStack {
+            Stepper("Scale Amount", value:
+                $animationAmount.animation(.linear), in: 1...10)
+            Spacer()
+            Button("Tap Me") {
+                self.animationAmount += 1
+            }
+            .padding(40)
+            .background(Color.red)
+            .foregroundColor(.white)
+            .clipShape(Circle())
+            .scaleEffect(animationAmount)
+        }
+    }
+}
+
 struct Animation1: View {
     
     @State private var animationAmount: CGFloat = 1
