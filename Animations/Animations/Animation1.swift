@@ -8,6 +8,42 @@
 
 import SwiftUI
 
+struct Animation4: View {
+    
+    @State private var enabled = false
+    
+    var body: some View {
+        Button("Tap me") {
+            self.enabled.toggle()
+        }
+        .frame(width: 200, height: 200)
+        .background(enabled ? Color.blue : Color.red)
+        .animation(.default)
+        .foregroundColor(.white)
+        .animation(.easeIn)
+        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+        .animation(.interpolatingSpring(stiffness: 10, damping: 3))
+    }
+}
+
+struct Animation3: View {
+    
+    @State private var animationAmount = 0.0
+    
+    var body: some View {
+        Button("Tap Me") {
+            withAnimation(.interpolatingSpring(stiffness: 10, damping: 1)) {
+                self.animationAmount += 360
+            }
+        }
+        .padding(50)
+        .background(Color.red)
+        .foregroundColor(.white)
+        .clipShape(Circle())
+        .rotation3DEffect(.degrees(animationAmount), axis: (x: 2, y: 1, z: 1))
+    }
+}
+
 struct Animation2: View {
     
     @State private var animationAmount: CGFloat = 1
