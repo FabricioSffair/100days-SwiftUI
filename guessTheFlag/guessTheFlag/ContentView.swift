@@ -29,6 +29,7 @@ struct BorderColor: ViewModifier {
     let width: CGFloat
     func body(content: Content) -> some View {
         content.overlay(Capsule().stroke(color, lineWidth: width))
+            .shadow(color: .green, radius: 5)
     }
 }
 
@@ -115,6 +116,7 @@ struct ContentView: View {
                             FlagImage(imageName: self.countries[number])
                                 .transition(number == self.correctAnswer ? .rotate360y : .opacity25)
                                 .id(self.highlightCorrect)
+                            .clipped()
                         } else if self.highlightError {
                             FlagImage(imageName: self.countries[number])
                                 .transition(number == self.correctAnswer ? .greenBorder : .opacity25)
