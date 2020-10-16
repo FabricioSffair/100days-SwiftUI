@@ -19,7 +19,7 @@ struct Rotate: ViewModifier {
     let amount: Double
     func body(content: Content) -> some View {
         content
-            .rotation3DEffect(Angle(degrees: amount), axis: (x: 0, y: 1, z: 0))
+            .rotation3DEffect(.degrees(amount), axis: (x: 0, y: 1, z: 0))
             .modifier(BorderColor(color: .green, width: 2))
     }
 }
