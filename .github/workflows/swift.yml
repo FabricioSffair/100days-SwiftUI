@@ -20,7 +20,5 @@ jobs:
       run: xcodebuild -project SwiftUIStudy/SwiftUIStudy.xcodeproj -scheme '${{ matrix.run-config['scheme'] }}' -showsdks
     - name: Show Available Destinations
       run: xcodebuild -project SwiftUIStudy/SwiftUIStudy.xcodeproj -scheme '${{ matrix.run-config['scheme'] }}' -showdestinations
-    - name: lint
-      run: swift format lint --configuration .swift-format-config -r .
     - name: build and test
       run: xcodebuild clean test -scheme '${{ matrix.run-config['scheme'] }}' -destination '${{ matrix.run-config['destination'] }}' -showBuildTimingSummary
