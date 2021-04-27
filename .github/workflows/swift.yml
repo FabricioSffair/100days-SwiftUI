@@ -1,0 +1,28 @@
+name: Swift
+
+on: [push]
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        run-config:
+          - { scheme: 'SwiftUIStudy', destination: 'platform=iOS Simulator,OS=13.4.1,name=iPhone 8' }
+          - { scheme: 'SwiftUIStudy', destination: 'platform=iOS Simulator,OS=13.4.1,name=iPhone 11' }
+    steps:
+    - name: Checkout Project
+      uses: actions/checkout@v1
+    - name: Homebrew build helpers install
+      run: brew bundle
+    - name: Show the currently detailed version of Xcode for CLI
+      run: xcode-select -p
+    - name: Show Build Settings
+      run: xcodebuild -workspace MPCF-TestBench.xcworkspace -scheme '${{ matrix.run-config['scheme'] }}' -showBuildSettings
+    - name: Show Build SDK
+      run: xcodebuild -workspace MPCF-TestBench.xcworkspace -scheme '${{ matrix.run-config['scheme'] }}' -showsdks
+    - name: Show Available Destinations
+      run: xcodebuild -workspace MPCF-TestBench.xcworkspace -scheme '${{ matrix.run-config['scheme'] }}' -showdestinations
+    - name: lint
+      run: swift format lint --configuration .swift-format-config -r .
+    - name: build and test
+      run: xcodebuild clean test -scheme '${{ matrix.run-config['scheme'] }}' -destination '${{ matrix.run-config['destination'] }}' -showBuildTimingSummary
