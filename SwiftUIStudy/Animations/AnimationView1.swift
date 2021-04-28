@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-//Transition
+// Transition
 struct Animation7: View {
     
     @State private var isShowingRed = false
@@ -25,7 +25,7 @@ struct Animation7: View {
                     .fill(Color.red)
                     .frame(width: 200, height: 200)
                     .transition(.asymmetric(insertion: .scale, removal: .opacity))
-                    //PREVIEW DOES NOT WORK 100%, running on simulator works
+                    // PREVIEW DOES NOT WORK 100%, running on simulator works
 //                    .transition(.scale)
             }
         }
@@ -178,7 +178,7 @@ struct Animation1: View {
     }
 }
 
-struct Animation1_Previes: PreviewProvider {
+struct Animation1Previes: PreviewProvider {
     static var previews: some View {
         Animation1()
     }

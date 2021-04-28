@@ -19,7 +19,7 @@ struct WeSplitView: View {
     var amountPerPerson: String {
         guard let numberOfPeople = Double(numOfPeople), numberOfPeople > 0 else { return "0.00" }
         let amountPerPerson = (totalAmount / numberOfPeople)
-        return String(format: "%.2f",amountPerPerson)
+        return String(format: "%.2f", amountPerPerson)
     }
     
     var totalAmount: Double {
@@ -57,7 +57,7 @@ struct WeSplitView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
             }
-            Section(header:Text("Total amount:")) {
+            Section(header: Text("Total amount:")) {
                 Text("$ \(totalAmountString)")
                     .foregroundColor(tipPercentage == 5 ? .red : .black)
             }

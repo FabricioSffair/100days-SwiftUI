@@ -9,7 +9,7 @@
 import SwiftUI
 
 enum MatchResult {
-    case Win, Lose, Tie
+    case win, lose, tie
 }
 
 struct TitleModifier: ViewModifier {
@@ -40,27 +40,27 @@ struct TitleView: View {
 
 enum GameObject: Int, CaseIterable {
     case rock = 0, paper, scissors
-    
+
     var image: Image {
         return Image("\(self)")
             .renderingMode(.original)
     }
-    
+
     func shouldWinGame(from otherObject: GameObject) -> MatchResult {
-        guard otherObject.rawValue != self.rawValue else { return .Tie }
+        guard otherObject.rawValue != self.rawValue else { return .tie }
         switch self {
         case .rock:
-            return otherObject == .scissors ? .Win : .Lose
+            return otherObject == .scissors ? .win : .lose
         case .paper:
-            return otherObject == .rock ? .Win : .Lose
+            return otherObject == .rock ? .win : .lose
         case .scissors:
-            return otherObject == .paper ? .Win : .Lose
+            return otherObject == .paper ? .win : .lose
         }
     }
 }
 
 struct RPSView: View {
-    
+
     @State var cpuObject: GameObject = GameObject.allCases[Int.random(in: 0..<GameObject.allCases.count)]
     @State private var shouldShowOpponentObject: Bool = false
     @State private var selectedObjectIndex: Int = 0
@@ -68,10 +68,12 @@ struct RPSView: View {
     @State private var score: Int = 0
     @State private var numOfPlays = 0
     @State private var showScore: Bool = false
-    
+
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Beige"), Color("IceBlue")]), startPoint: .bottomTrailing, endPoint: .topLeading)
+            LinearGradient(gradient: Gradient(colors: [Color("Beige"), Color("IceBlue")]),
+                           startPoint: .bottomTrailing,
+                           endPoint: .topLeading)
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center) {
                 Spacer()
@@ -109,14 +111,14 @@ struct RPSView: View {
             }
         }
     }
-    
+
     func didSelectObject(_ object: GameObject) {
         numOfPlays += 1
         let matchResult = object.shouldWinGame(from: cpuObject)
-        if matchResult == .Win {
+        if matchResult == .win {
             score += 1
             title = "You won this round"
-        } else if matchResult == .Lose {
+        } else if matchResult == .lose {
             score = score == 0 ? score : (score - 1)
             title = "You lost this round"
         } else {
@@ -130,7 +132,7 @@ struct RPSView: View {
         print(cpuObject)
         print(matchResult)
     }
-    
+
     func reset() {
         showScore = false
         cpuObject = GameObject.allCases[Int.random(in: 0..<GameObject.allCases.count)]

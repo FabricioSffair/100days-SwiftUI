@@ -14,7 +14,7 @@ extension StringProtocol {
 
 enum ExpenseType: Int, CaseIterable {
     case home = 0, shopping, groceries, phone, memberships, food, liquor
-    
+
     var displayString: String {
         "\(self)".firstCapitalized
     }
@@ -28,9 +28,7 @@ struct ExpenseItem: Identifiable {
 }
 
 extension ExpenseItem: Equatable {
-    static func ==(lhs: Self, rhs: Self) -> Bool {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }
 }
-
-

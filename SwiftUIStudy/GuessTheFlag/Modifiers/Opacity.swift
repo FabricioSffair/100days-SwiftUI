@@ -13,4 +13,3 @@ struct Opacity: ViewModifier {
         content.opacity(amount)
     }
 }
-

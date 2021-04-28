@@ -10,21 +10,21 @@ import SwiftUI
 import CoreML
 
 struct BetterRestView: View {
-    
+
     static var defaultWakeupTime: Date {
         var components = DateComponents()
         components.hour = 8
         components.minute = 0
         return Calendar.current.date(from: components) ?? Date()
     }
-    
+
     @State private var wakeUp: Date = defaultWakeupTime
     @State private var coffeeAmountString = 0
     @State private var sleepAmount = 8.0
     
     private var coffeeAmountArray = Array(0...20)
     private var coffeeAmount: Double {
-        Double(self.coffeeAmountString) ?? 0
+        Double(self.coffeeAmountString)
     }
     
     @State private var alertTitle = ""
@@ -32,7 +32,7 @@ struct BetterRestView: View {
     @State private var showingAlert = false
     
     @State private var idealBedTime = ""
-    
+
     var body: some View {
         VStack {
             Form {
@@ -57,7 +57,7 @@ struct BetterRestView: View {
                             }
                         }
                         .labelsHidden()
-                        //Stepper instead of Picker:
+                        // Stepper instead of Picker:
                         //                            Stepper(value: $coffeeAmount, in: 0...20, step: 0.5) {
                         //                                if coffeeAmount == 1 {
                         //                                    Text("\(String(format: "%g", coffeeAmount)) cup")
@@ -90,7 +90,9 @@ struct BetterRestView: View {
         let hour = (components.hour ?? 0) * 60 * 60
         let minute = (components.minute ?? 0) * 60
         do {
-            let prediction = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: coffeeAmount)
+            let prediction = try model.prediction(wake: Double(hour + minute),
+                                                  estimatedSleep: sleepAmount,
+                                                  coffee: coffeeAmount)
             let sleepTime = wakeUp - prediction.actualSleep
             let formatter = DateFormatter()
             formatter.timeStyle = .short

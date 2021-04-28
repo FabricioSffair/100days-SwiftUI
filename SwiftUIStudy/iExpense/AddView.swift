@@ -15,7 +15,7 @@ struct AddView: View {
     @State private var name = ""
     @State private var type = ExpenseType.home
     @State private var amount = ""
-    @State var expenseItem: ExpenseItem? = nil
+    @State var expenseItem: ExpenseItem?
     @State private var isPresentingAlert = false
     
     @ObservedObject var expenses: Expenses
@@ -65,7 +65,9 @@ struct AddView: View {
                 }
             }
             .alert(isPresented: $isPresentingAlert) {
-                Alert(title: Text("\"\(amount)\" is not a valid amount."), message: Text("Please insert a valid amount spent"), dismissButton: .default(Text("Ok")))
+                Alert(title: Text("\"\(amount)\" is not a valid amount."),
+                      message: Text("Please insert a valid amount spent"),
+                      dismissButton: .default(Text("Ok")))
             }
         }
     }

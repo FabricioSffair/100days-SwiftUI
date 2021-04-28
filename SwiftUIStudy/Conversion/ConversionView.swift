@@ -83,13 +83,13 @@ enum LengthUnit: Int, Identifiable, CaseIterable {
         let amount = toFeet(amount: value)
         switch unit {
         case .feet:
-             return amount
-         case .meters:
-             return amount / 3.281
-         case .yard:
-             return amount / 3
-         case .mile:
-             return amount / 5280
+            return amount
+        case .meters:
+            return amount / 3.281
+        case .yard:
+            return amount / 3
+        case .mile:
+            return amount / 5280
         }
     }
 }
@@ -187,19 +187,23 @@ struct ConversionView: View {
         switch selectedUnit {
         case .temperature:
             guard let finalUnit = TemperatureUnit(rawValue: convertToUnit),
-                let convertedAmount = TemperatureUnit(rawValue: convertFromUnit)?.convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
+                let convertedAmount = TemperatureUnit(rawValue: convertFromUnit)?
+                    .convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
             return convertedAmount
         case .time:
             guard let finalUnit = TimeUnit(rawValue: convertToUnit),
-                let convertedAmount = TimeUnit(rawValue: convertFromUnit)?.convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
+                let convertedAmount = TimeUnit(rawValue: convertFromUnit)?
+                    .convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
             return convertedAmount
         case .length:
             guard let finalUnit = LengthUnit(rawValue: convertToUnit),
-                let convertedAmount = LengthUnit(rawValue: convertFromUnit)?.convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
+                let convertedAmount = LengthUnit(rawValue: convertFromUnit)?
+                    .convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
             return convertedAmount
         case .volume:
             guard let finalUnit = VolumeUnit(rawValue: convertToUnit),
-                let convertedAmount = VolumeUnit(rawValue: convertFromUnit)?.convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
+                let convertedAmount = VolumeUnit(rawValue: convertFromUnit)?
+                    .convert(from: convertFromValue, to: finalUnit) else { return 0.0 }
             return convertedAmount
         }
     }

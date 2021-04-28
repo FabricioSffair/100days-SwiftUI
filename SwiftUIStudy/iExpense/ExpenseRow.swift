@@ -10,9 +10,9 @@ import Foundation
 import SwiftUI
 
 struct ExpenseRow: View {
-    
+
     @State var item: ExpenseItem
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {

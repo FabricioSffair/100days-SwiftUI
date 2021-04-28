@@ -33,11 +33,11 @@ extension View {
     func titleStyle() -> some View {
         self.modifier(Title())
     }
-    
+
     func blueTitleStyle() -> some View {
         self.modifier(LargeBlueTitle())
     }
-    
+
     func watermarked(with text: String) -> some View {
         self.modifier(Watermark(text: text))
     }
@@ -45,7 +45,7 @@ extension View {
 
 struct Watermark: ViewModifier {
     var text: String
-    
+
     func body(content: Content) -> some View {
         ZStack(alignment: .bottomTrailing) {
             content
@@ -62,7 +62,7 @@ struct GridStack<Content: View>: View {
     let rows: Int
     let columns: Int
     let content: (Int, Int) -> Content
-    
+
     var body: some View {
         VStack {
             ForEach(0 ..< rows) { row in
@@ -83,7 +83,7 @@ struct GridStack<Content: View>: View {
 
 struct CapsuleText: View {
     var text: String
-    
+
     var body: some View {
         Text(text)
             .font(.largeTitle)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WordScrambleView: View {
-    
+
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
@@ -16,9 +16,9 @@ struct WordScrambleView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     @State private var score = 0
-    
+
     var body: some View {
-        
+
         VStack {
             TextField("Enter your word", text: $newWord, onCommit: addNewWord)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -40,7 +40,7 @@ struct WordScrambleView: View {
             Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("Ok")))
         }
     }
-    
+
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         guard answer.count > 2 else {
@@ -67,11 +67,11 @@ struct WordScrambleView: View {
         usedWords.insert(answer, at: 0)
         newWord = ""
     }
-    
+
     func isOriginal(word: String) -> Bool {
         !usedWords.contains(word)
     }
-    
+
     func isPossible(word: String) -> Bool {
         var tempWord = rootWord
         for letter in word {
@@ -83,20 +83,24 @@ struct WordScrambleView: View {
         }
         return true
     }
-    
+
     func isReal(word: String) -> Bool {
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
-        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+        let misspelledRange = checker.rangeOfMisspelledWord(in: word,
+                                                            range: range,
+                                                            startingAt: 0,
+                                                            wrap: false,
+                                                            language: "en")
         return misspelledRange.location == NSNotFound
     }
-    
+
     func showError(title: String, message: String) {
         errorTitle = title
         errorMessage = message
         showingError = true
     }
-    
+
     func startGame() {
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: ".txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {

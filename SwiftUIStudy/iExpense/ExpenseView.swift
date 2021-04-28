@@ -16,8 +16,7 @@ struct Colors {
 struct ExpenseView: View {
     @ObservedObject private var expenses = Expenses()
     @State private var showingAddExpense = false
-    @State private var expenseItem: ExpenseItem? = nil
-    
+    @State private var expenseItem: ExpenseItem?
     
     init() {
         UITableView.appearance().separatorStyle = .none
