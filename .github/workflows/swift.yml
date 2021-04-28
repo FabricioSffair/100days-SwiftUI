@@ -15,10 +15,12 @@ jobs:
     - name: Show the currently detailed version of Xcode for CLI
       run: xcode-select -p
     - name: Show Build Settings
-      run: xcodebuild -project SwiftUIStudy/SwiftUIStudy.xcodeproj -scheme '${{ matrix.run-config['scheme'] }}' -showBuildSettings
+      run: xcodebuild -workspace SwiftUIStudy/SwiftUIStudy.xcworkspace -scheme '${{ matrix.run-config['scheme'] }}' -showBuildSettings
     - name: Show Build SDK
-      run: xcodebuild -project SwiftUIStudy/SwiftUIStudy.xcodeproj -scheme '${{ matrix.run-config['scheme'] }}' -showsdks
+      run: xcodebuild -workspace SwiftUIStudy/SwiftUIStudy.xcworkspace -scheme '${{ matrix.run-config['scheme'] }}' -showsdks
     - name: Show Available Destinations
-      run: xcodebuild -project SwiftUIStudy/SwiftUIStudy.xcodeproj -scheme '${{ matrix.run-config['scheme'] }}' -showdestinations
+      run: xcodebuild -workspace SwiftUIStudy/SwiftUIStudy.xcworkspace -scheme '${{ matrix.run-config['scheme'] }}' -showdestinations
+    - name: lint
+      run: swiftlint SwiftUIStudy/ 
     - name: build and test
       run: xcodebuild clean test -scheme '${{ matrix.run-config['scheme'] }}' -destination '${{ matrix.run-config['destination'] }}' -showBuildTimingSummary
