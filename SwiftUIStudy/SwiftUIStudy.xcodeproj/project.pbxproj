@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1927AD57263AE643006EFC27 /* ImagesGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD56263AE643006EFC27 /* ImagesGeometryReader.swift */; };
+		1927AD5F263AEA5D006EFC27 /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927AD5E263AEA5D006EFC27 /* astronauts.json */; };
+		1927AD64263AEA72006EFC27 /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 1927AD63263AEA72006EFC27 /* missions.json */; };
+		1927AD69263AEA81006EFC27 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD68263AEA81006EFC27 /* Astronaut.swift */; };
+		1927AD6E263AEA87006EFC27 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD6D263AEA87006EFC27 /* Mission.swift */; };
+		1927AD77263AEAEB006EFC27 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD76263AEAEB006EFC27 /* Bundle+Decode.swift */; };
+		1927AD8A263AED06006EFC27 /* MoonshotHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD89263AED06006EFC27 /* MoonshotHomeView.swift */; };
+		1927AD8F263AF051006EFC27 /* MissionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD8E263AF051006EFC27 /* MissionDetailsView.swift */; };
+		1927AD97263AF9D2006EFC27 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1927AD96263AF9D2006EFC27 /* AstronautView.swift */; };
 		193435ED2638558700C23F1D /* SwiftUIStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193435EC2638558700C23F1D /* SwiftUIStudyApp.swift */; };
 		193435EF2638558700C23F1D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193435EE2638558700C23F1D /* HomeView.swift */; };
 		193435F12638558A00C23F1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 193435F02638558A00C23F1D /* Assets.xcassets */; };
@@ -57,6 +66,15 @@
 
 /* Begin PBXFileReference section */
 		0D0A143ADC8A830B9573E853 /* Pods-SwiftUIStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIStudyTests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIStudyTests/Pods-SwiftUIStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1927AD56263AE643006EFC27 /* ImagesGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesGeometryReader.swift; sourceTree = "<group>"; };
+		1927AD5E263AEA5D006EFC27 /* astronauts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = astronauts.json; sourceTree = "<group>"; };
+		1927AD63263AEA72006EFC27 /* missions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
+		1927AD68263AEA81006EFC27 /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
+		1927AD6D263AEA87006EFC27 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		1927AD76263AEAEB006EFC27 /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
+		1927AD89263AED06006EFC27 /* MoonshotHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotHomeView.swift; sourceTree = "<group>"; };
+		1927AD8E263AF051006EFC27 /* MissionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailsView.swift; sourceTree = "<group>"; };
+		1927AD96263AF9D2006EFC27 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 		193435E92638558700C23F1D /* SwiftUIStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		193435EC2638558700C23F1D /* SwiftUIStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIStudyApp.swift; sourceTree = "<group>"; };
 		193435EE2638558700C23F1D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -127,9 +145,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1927AD55263AE5EE006EFC27 /* MoonShot */ = {
+			isa = PBXGroup;
+			children = (
+				1927AD75263AEAD3006EFC27 /* views */,
+				1927AD74263AEABD006EFC27 /* domain */,
+				1927AD72263AEA89006EFC27 /* data */,
+				1927AD56263AE643006EFC27 /* ImagesGeometryReader.swift */,
+			);
+			path = MoonShot;
+			sourceTree = "<group>";
+		};
+		1927AD72263AEA89006EFC27 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				1927AD5E263AEA5D006EFC27 /* astronauts.json */,
+				1927AD63263AEA72006EFC27 /* missions.json */,
+				1927AD68263AEA81006EFC27 /* Astronaut.swift */,
+				1927AD6D263AEA87006EFC27 /* Mission.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		1927AD74263AEABD006EFC27 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				1927AD76263AEAEB006EFC27 /* Bundle+Decode.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		1927AD75263AEAD3006EFC27 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				1927AD89263AED06006EFC27 /* MoonshotHomeView.swift */,
+				1927AD8E263AF051006EFC27 /* MissionDetailsView.swift */,
+				1927AD96263AF9D2006EFC27 /* AstronautView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		193435E02638558700C23F1D = {
 			isa = PBXGroup;
 			children = (
+				1927AD55263AE5EE006EFC27 /* MoonShot */,
 				193436E926389A9A00C23F1D /* WeSplit */,
 				193436DA263899BE00C23F1D /* ViewsAndModifiers */,
 				193436D02638998B00C23F1D /* Conversion */,
@@ -418,8 +477,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				193435F42638558A00C23F1D /* Preview Assets.xcassets in Resources */,
+				1927AD64263AEA72006EFC27 /* missions.json in Resources */,
 				193437412638A14600C23F1D /* start.txt in Resources */,
 				193435F12638558A00C23F1D /* Assets.xcassets in Resources */,
+				1927AD5F263AEA5D006EFC27 /* astronauts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,20 +593,27 @@
 			files = (
 				1934371F2638A0E200C23F1D /* Expenses.swift in Sources */,
 				193436F42638A00600C23F1D /* SleepCalculator.mlmodel in Sources */,
+				1927AD57263AE643006EFC27 /* ImagesGeometryReader.swift in Sources */,
 				193437492638A14B00C23F1D /* WeSplitView.swift in Sources */,
 				193437102638A09900C23F1D /* ConversionView.swift in Sources */,
 				1934367D2638586D00C23F1D /* BorderColor.swift in Sources */,
 				1934368C263858E000C23F1D /* CapsuledBorder.swift in Sources */,
 				193437282638A0ED00C23F1D /* ExpenseRow.swift in Sources */,
+				1927AD69263AEA81006EFC27 /* Astronaut.swift in Sources */,
 				193437202638A0E200C23F1D /* ExpenseItem.swift in Sources */,
+				1927AD77263AEAEB006EFC27 /* Bundle+Decode.swift in Sources */,
 				193436B3263897A200C23F1D /* WordScramble.swift in Sources */,
 				193435EF2638558700C23F1D /* HomeView.swift in Sources */,
 				19343682263858A600C23F1D /* AnyTransition.swift in Sources */,
+				1927AD97263AF9D2006EFC27 /* AstronautView.swift in Sources */,
 				1934372E2638A10C00C23F1D /* RPSView.swift in Sources */,
 				193436FA2638A00D00C23F1D /* AnimationView1.swift in Sources */,
 				193435ED2638558700C23F1D /* SwiftUIStudyApp.swift in Sources */,
+				1927AD8F263AF051006EFC27 /* MissionDetailsView.swift in Sources */,
 				193437292638A0ED00C23F1D /* AddView.swift in Sources */,
+				1927AD8A263AED06006EFC27 /* MoonshotHomeView.swift in Sources */,
 				193437272638A0ED00C23F1D /* ExpenseView.swift in Sources */,
+				1927AD6E263AEA87006EFC27 /* Mission.swift in Sources */,
 				193436702638584C00C23F1D /* Opacity.swift in Sources */,
 				193436782638585F00C23F1D /* Rotate.swift in Sources */,
 				193436F52638A00600C23F1D /* BetterRest.swift in Sources */,

@@ -12,7 +12,7 @@ struct CapsuledBorder: ViewModifier {
         content
             .clipShape(Capsule())
             .overlay(Capsule().stroke(Color.black, lineWidth: 0.5))
-            .shadow(color: .black, radius: 5)
+            .shadow(color: .primary, radius: 5)
     }
 }
 
