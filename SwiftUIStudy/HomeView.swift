@@ -38,6 +38,9 @@ struct HomeView: View {
                 NavigationLink(destination: WeSplitView()) {
                     Text("We Split")
                 }
+                NavigationLink(destination: MoonshotHomeView()) {
+                    Text("Moonshot")
+                }
             }
             .navigationTitle("Home")
         })
